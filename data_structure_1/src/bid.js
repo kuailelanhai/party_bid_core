@@ -13,3 +13,8 @@ create_new_bid = function () {
 
 
 }
+transform_bids_to_view_model = function(){
+    var activities = JSON.parse(localStorage.getItem("activities"))
+    var working_activity = _.find(activities,function(activity){return activity.name == localStorage.current_activity})
+    return working_activity.bids
+}

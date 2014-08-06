@@ -71,6 +71,8 @@ describe("Bids and Bidding Render", function() {
         localStorage.current_activity = "second activity";
         localStorage.is_bidding = "";
     });
+    console.log(localStorage.activities)
+    console.log('++++++')
 
     afterEach(function(){
         localStorage.clear();
