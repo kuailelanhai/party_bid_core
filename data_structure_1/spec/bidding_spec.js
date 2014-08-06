@@ -37,12 +37,12 @@ describe("Bidding", function() {
         localStorage.current_activity = "second activity";
         localStorage.current_bid = "竞价1";
         localStorage.is_bidding = "";
+
     });
-
-    afterEach(function(){
-        localStorage.clear();
-    })
-
+//    afterEach(function(){
+//        localStorage.clear();
+//    })
+    console.log(localStorage.activities)
     it("should bid successfully when it is bidding and user has signed up", function(){
         var phone_no = "13600000000";
         var sms_json = build_sms_json("JJ12", phone_no);
@@ -51,6 +51,7 @@ describe("Bidding", function() {
 
         var activities = JSON.parse(localStorage.activities);
         expect(activities[1].bids.length).toBe(1);
+        console.log(activities[1].bids[0].biddings)
         expect(activities[1].bids[0].biddings[0].name).toBe("仝键");
         expect(activities[1].bids[0].biddings[0].phone).toBe(phone_no);
         expect(activities[1].bids[0].biddings[0].price).toBe("12");
