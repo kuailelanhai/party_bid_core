@@ -11,7 +11,7 @@ describe("SignUp", function() {
     afterEach(function(){
         localStorage.clear();
     })
-
+    Sign_up.give_name()
 
     it("should one sms with signing up content sign up successfully when it is signing up", function(){
         var sms_json = build_sms_json("BM仝键", "13600000000");
