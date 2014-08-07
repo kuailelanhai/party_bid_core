@@ -17,16 +17,18 @@ transform_bids_to_view_model = function(){
     var activities = JSON.parse(localStorage.getItem("activities"))
     return activities[localStorage.current_activity].bids
 }
-transform_biddings_to_view_model = function(){
-    var activities = JSON.parse(localStorage.getItem("activities"))
-    var working_activity= _.find(activities, function (working) {
-        return working.name == localStorage.current_activity
-    }).bids
-    var work_biddings = _.find(working_activity,function(working){return working.name=="竞价2"}).biddings
-    console.log(work_biddings[0])
-    console.log('01')
-    return work_biddings[0]
-}
+//transform_biddings_to_view_model = function(){
+//    var activities = JSON.parse(localStorage.getItem("activities"))
+//    console.log('888')
+//    console.log(activities)
+//    var id = activities[localStorage.current_activity_id].bids.length + 1
+//    var jj_id = "竞价" + id
+//    console.log(id)
+//    var current_jj_result = activities[localStorage.current_activity].biddings[jj_id]
+//    console.log(current_jj_result())
+//    console.log('99999')
+//    return current_jj_result
+//}
 render_sign_ups = function(){
     var activities = JSON.parse(localStorage.getItem("activities"))
     return working_activity = _.find(activities,function(working){return working.name == localStorage.current_activity}).sign_ups
@@ -65,10 +67,12 @@ create_new_bid =function(){
 //    var activities = JSON.parse(localStorage.getItem("activities"))
 //    return activities[localStorage.current_activity].bids
 //}
-//transform_biddings_to_view_model=function(){
-//    var activities = JSON.parse(localStorage.getItem("activities"))
-//    return activities[localStorage.current_activity].biddings["竞价2"]
-//}
+transform_biddings_to_view_model=function(){
+    var activities = JSON.parse(localStorage.getItem("activities"))
+    console.log('9999')
+    console.log(activities[localStorage.current_activity].biddings["竞价2"])
+    return activities[localStorage.current_activity].biddings["竞价2"][1]
+}
 //render_sign_ups=function(){
 //    var activities = JSON.parse(localStorage.getItem("activities"))
 //    return  activities[localStorage.current_activity].sign_ups
