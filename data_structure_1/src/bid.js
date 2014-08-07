@@ -25,8 +25,9 @@ transform_biddings_to_view_model = function(){
     }).bids
     var work_biddings = _.find(working_activity,function(working){return working.name=="竞价2"}).biddings
     console.log(work_biddings[0])
+    console.log(work_biddings.length)
     console.log('01')
-    return work_biddings[0]
+    return work_biddings
 }
 render_sign_ups = function(){
     var activities = JSON.parse(localStorage.getItem("activities"))
