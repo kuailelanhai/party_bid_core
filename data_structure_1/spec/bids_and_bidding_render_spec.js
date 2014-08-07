@@ -57,11 +57,6 @@ describe("Bids and Bidding Render", function() {
 
 
                         },
-//                        {
-//                            name: "于硕",
-//                            phone:"15600000000",
-//                            price: "12"
-//                        },
                         {
                             name: "吴京川",
                             phone:"13800000000",
@@ -93,7 +88,6 @@ describe("Bids and Bidding Render", function() {
 
     it("should show minimum not repeatable bidding", function(){
         var biddings = transform_biddings_to_view_model("second activity","竞价2");
-
         expect(biddings.length).toBe(1);
         expect(biddings[0].name).toBe("于硕");
         expect(biddings[0].phone).toBe("15600000000");

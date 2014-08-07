@@ -6,9 +6,10 @@ function notify_sms_received(sms_json){
             put_signs_up(sms_json)
         }
     }
-    if(localStorage.is_bidding == 'true' && !check_jj_status(sms_json) && !check_bid_phone_repeat(sms_json) && !failed_user_no_bm(sms_json)){
+    if(localStorage.is_bidding == 'true' && !check_jj_status(sms_json) && !check_bid_phone_repeat(sms_json) && failed_user_no_bm(sms_json)){
         put_bids_biddings(sms_json)
     }
+//    if
 }
 put_bids_biddings = function(sms_json){
 
@@ -32,8 +33,13 @@ failed_user_no_bm = function(sms_json){
         var bid_price = message.substr(2).trim()
         var bid_phone = sms_json.messages[0].phone
     }
+    console.log(localStorage.current_activity)
+    var work = _.findWhere(activities,{name: localStorage.current_activity}).sign_ups
+    console.log(work[0].phone)
+    console.log(bid_phone)
+    console.log('120')
     var working_activity = _.find(activities,function(working){return working.name == localStorage.current_activity})
-    return (_.find(working_activity,function(working){return working.phone == bid_phone}))
+    return (_.find(work,function(working){return work[0].phone == bid_phone}))
 }
 check_bid_phone_repeat=function(sms_json){
     var activities = JSON.parse(localStorage.getItem("activities"));
@@ -42,5 +48,4 @@ check_bid_phone_repeat=function(sms_json){
         return working.name==localStorage.current_activity
     })
     return( _.find(activity.bids[0].biddings,function(working){ return working.phone==apply_phone}))
-
 }
