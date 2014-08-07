@@ -15,6 +15,9 @@ create_new_bid = function () {
 }
 transform_bids_to_view_model = function(){
     var activities = JSON.parse(localStorage.getItem("activities"))
+    console.log(activities[localStorage.current_activity].bids.length)
+    console.log('10000000000000000')
+    console.log(activities[localStorage.current_activity].bids[0])
     return activities[localStorage.current_activity].bids
 }
 //transform_biddings_to_view_model = function(){
@@ -70,8 +73,8 @@ create_new_bid =function(){
 transform_biddings_to_view_model=function(){
     var activities = JSON.parse(localStorage.getItem("activities"))
     console.log('9999')
-    console.log(activities[localStorage.current_activity].biddings["竞价2"])
-    return activities[localStorage.current_activity].biddings["竞价2"][1]
+    console.log(activities[localStorage.current_activity].biddings)
+    return activities[localStorage.current_activity].biddings["竞价2"]
 }
 //render_sign_ups=function(){
 //    var activities = JSON.parse(localStorage.getItem("activities"))
