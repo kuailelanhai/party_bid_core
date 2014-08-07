@@ -22,6 +22,8 @@ describe("Bid", function() {
     })
 
     it("should create new bid", function(){
+        console.log(localStorage.activities)
+        console.log(localStorage.current_activity_id)
         create_new_bid("0");
 
         var activities = JSON.parse(localStorage.activities);
