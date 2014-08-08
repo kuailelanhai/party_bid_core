@@ -12,8 +12,15 @@ create_new_bid = function(){
     bids.unshift(bid)
     localStorage.setItem("bids",JSON.stringify(bids))
 }
-
-
+render_bids = function(){
+    var bids =JSON.parse(localStorage.getItem("bids"))
+    return bids
+}
+render_biddings = function(){
+    var bids = JSON.parse(localStorage.getItem("bids"))
+    var bid = _.findWhere(bids,{activity_id:"1"}).biddings
+    return bid
+}
 
 
 

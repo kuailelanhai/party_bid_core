@@ -43,14 +43,16 @@ describe("Bids and Bidding Render", function() {
                 activity_id:"1",
                 biddings:[
                     {
+                        name:"于硕",
+                        phone:"15600000000",
+                        price: "12"
+                    },
+                    {
                         phone:"13600000000",
                         price: "10"
 
                     },
-                    {
-                        phone:"15600000000",
-                        price: "12"
-                    },
+
                     {
                         phone:"13800000000",
                         price: "10"
