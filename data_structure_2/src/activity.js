@@ -5,7 +5,6 @@ function Activity(activity_name){
     this.biddings = {}
 }
 Activity.prototype.create = function(){
-//    console.log(localStorage.activity_ids)
     var activities_json = JSON.parse(localStorage.getItem("activities")) || {};
     var activity_ids = JSON.parse(localStorage.getItem("activity_ids")) || [];
     var id = activity_ids.length
