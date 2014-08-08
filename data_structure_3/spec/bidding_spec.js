@@ -19,6 +19,7 @@ describe("Bidding", function() {
         localStorage.bids = JSON.stringify(bids)
     });
 
+
     afterEach(function(){
         localStorage.clear();
     })

@@ -1,86 +1,3 @@
-//function notify_sms_received(sms_json){
-//    if(localStorage.is_signing_up = "true" && !failed_user_signed(sms_json) && check_bm_status(sms_json) && message.search(/bm/i) == 0){
-//        success_sign_up(sms_json)
-//    }
-//    if(localStorage.is_bidding = "true" && !failed_user_jj(sms_json) && message.search(/jj/i) == 0 && !failed_no_bm(sms_json) && !check_jj_status(sms_json)){
-//        sucess_bidding(sms_json)
-//    }
-//}
-//success_sign_up = function(sms_json){
-//    var sign_ups = JSON.parse(localStorage.getItem("sign_ups"))
-//    var message = sms_json.messages[0].message.replace(/\s/g,"")
-//    var apply_name = message.substr(2).trim()
-//    var apply_phone = sms_json.messages[0].phone
-//    var apply_list = {'name': apply_name, 'activity_id': localStorage.current_activity,'phone': apply_phone}
-//    sign_ups.unshift(apply_list)
-//    localStorage.setItem("sign_ups",JSON.stringify(sign_ups))
-////    return sign_ups
-//}
-//failed_user_signed = function(sms_json){
-//    var sign_ups = JSON.parse(localStorage.getItem("sign_ups"))
-//    var message = sms_json.messages[0].message.replace(/\s/g,"")
-//    var apply_name = message.substr(2).trim()
-//    var apply_phone = sms_json.messages[0].phone
-//    return _.find(sign_ups,function(sign){return sign.phone == apply_phone})
-//}
-//check_bm_status = function(sms_json){
-//    var activities = JSON.parse(localStorage.getItem("activities"))
-//    var sign_ups = JSON.parse(localStorage.getItem("sign_ups"))
-//    var message = sms_json.messages[0].message.replace(/\s/g,"")
-//    var apply_name = message.substr(2).trim()
-//    var apply_phone =sms_json.messages[0].phone
-//    if(message.search(/bm/i) == 0){
-////        var sign_up = _.findWhere(sign_ups,{id:localStorage.current_activity_id})
-//        return _.find(sign_ups,function(sign){return sign.phone == apply_phone})
-//    }
-//}
-//success_bidding = function(sms_json){
-//    var bids = JSON.parse(localStorage.getItem("bids"))
-//    var message = sms_json.messages[0].message.replace(/\s/g,"")
-//    var bid_price = message.substr(2).trim()
-//    var bid_phone = sms_json.messages[0].phone
-//    var bid_list = {'price': bid_price, 'activity_id': localStorage.current_bid,'phone': bid_phone}
-//    bids.unshift(bid_list)
-//    localStorage.setItem("bids",JSON.stringify(bids))
-//}
-//failed_user_jj = function(sms_json){
-//    var bids = JSON.parse(localStorage.getItem("bids"))
-//    var message = sms_json.messages[0].message.replace(/\s/g,"")
-//    var bid_price = message.substr(2).trim()
-//    var bid_phone = sms_json.messages[0].phone
-//    return _.find(bids,function(bid){return bid.phone == bid_phone})
-//}
-//failed_no_bm = function(sms_json){
-//    var sign_ups = JSON.parse(localStorage.getItem("sign_ups"))
-//    var message = sms_json.messages[0].message.replace(/\s/g,"")
-//    var bid_price = message.substr(2).trim()
-//    var bid_phone = sms_json.messages[0].phone
-//    return _.find(sign_ups,function(sign){return sign.phone != bid_phone})
-//}
-//check_jj_status = function(sms_json){
-//    var bids = JSON.parse(localStorage.getItem("bids"))
-//    var message = sms_json.messages[0].message.replace(/\s/g,"")
-//    var bid_price = message.substr(2).trim()
-//    var bid_phone = sms_json.messages[0].phone
-//    if(message.search(/jj/i) == 0){
-//        return _.find(bids,function(bid){return bid.phone == bid_phone})
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function notify_sms_received(sms_json) {
@@ -88,7 +5,7 @@ function notify_sms_received(sms_json) {
     if (localStorage.is_signing_up == "true" && !check_activity_phone_repeat(sms_json) && message.search(/bm/i) == 0) {
         save_sign_up_message(sms_json)
     }
-    if(localStorage.is_bidding == "true"  && message.search(/jj/i) == 0 && check_bid_activity_phone(sms_json) && !check_bid_phone_repeat(sms_json)){
+    if(localStorage.is_bidding == "true"  && message.search(/jj/i) == 0 && check_bid_activity_phone(sms_json) && !check_bid_phone_repeat(sms_json) && !check_jj_status(sms_json)){
         save_bid_message(sms_json)
     }
 }
@@ -104,11 +21,14 @@ check_bid_activity_phone=function(sms_json){
 }
 check_activity_phone_repeat=function(sms_json){
     var sign_ups = JSON.parse(localStorage.getItem("sign_ups"))
+//    var sign_ups = localStorage.sign_ups
+    console.log(sign_ups)
     var apply_phone = sms_json.messages[0].phone
     return( _.find(sign_ups,function(sign_ups){return sign_ups.phone==apply_phone}))
 }
 save_sign_up_message = function (sms_json) {
     var sign_ups = JSON.parse(localStorage.getItem("sign_ups"))
+//    var sign_ups = localStorage.sign_ups
     var message = sms_json.messages[0].message.replace(/\s/g, "");
     var apply_name = message.substr(2).trim()
     var apply_phone = sms_json.messages[0].phone
@@ -129,4 +49,13 @@ save_bid_message=function(sms_json){
     var apply_array = {'name': apply_name,'price': bid_price, 'phone': apply_phone, 'activity_id': localStorage.current_activity}
     bids[0].biddings.unshift(apply_array)
     localStorage.setItem("bids", JSON.stringify(bids))
+}
+check_jj_status =function(sms_json){
+    var bids = JSON.parse(localStorage.getItem("bids"))
+    var message = sms_json.messages[0].message.replace(/\s/g,"")
+    var bid_price = message.substr(2).trim()
+    var bid_phone = sms_json.messages[0].phone
+    if(message.search(/jj/i) == 0){
+        return _.find(bids[0].biddings,function(bid){return bid.phone == bid_phone})
+    }
 }

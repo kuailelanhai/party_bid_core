@@ -67,17 +67,17 @@ describe("SignUp", function() {
 
 
     beforeEach(function() {
-        init_activity_database();
+        init_activity_database()
         init_two_activity();
         localStorage.current_activity = "1";
         localStorage.is_signing_up = "";
     });
-
     afterEach(function(){
         localStorage.clear();
     })
-
+    console.log(localStorage.activity_id_generator)
     it("should one sms with signing up content sign up successfully when it is signing up", function(){
+        console.log(typeof(localStorage.sign_ups))
         var sms_json = build_sms_json("BM仝键", "13600000000");
         localStorage.is_signing_up = "true";
         notify_sms_received(sms_json);
@@ -86,7 +86,6 @@ describe("SignUp", function() {
         expect(sign_ups.length).toBe(1);
         expect(sign_ups[0].name).toBe("仝键");
         expect(sign_ups[0].activity_id).toBe("1");
-
     });
 
     it("should one sms with signing up content sign up failed when user has signed", function(){
