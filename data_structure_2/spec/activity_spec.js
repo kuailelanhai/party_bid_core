@@ -34,7 +34,8 @@ describe("Activity", function() {
         activity.create();
 
         expect(localStorage.activity_id_generator).toBe("3");
-
+console.log(localStorage.activities)
+        console.log('------------')
         var activities_json = JSON.parse(localStorage.activities);
         expect(activities_json["0"].name).toBe("first activity");
         expect(activities_json["1"].name).toBe("second activity");
