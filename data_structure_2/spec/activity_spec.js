@@ -17,7 +17,7 @@ describe("Activity", function() {
 
         var activities_json = JSON.parse(localStorage.activities);
         var activity_ids = JSON.parse(localStorage.activity_ids)
-        expect(activity_ids.length).toBe(0);
+        expect(activity_ids.length).toBe(1);
         expect(activities_json["0"].name).toBe(activity_name);
         expect(JSON.stringify(activities_json["0"].sign_ups)).toBe("[]");
         expect(JSON.stringify(activities_json["0"].bids)).toBe("[]");
@@ -35,6 +35,7 @@ describe("Activity", function() {
 
         expect(localStorage.activity_id_generator).toBe("3");
 console.log(localStorage.activities)
+        console.log(localStorage.activity_ids)
         console.log('------------')
         var activities_json = JSON.parse(localStorage.activities);
         expect(activities_json["0"].name).toBe("first activity");

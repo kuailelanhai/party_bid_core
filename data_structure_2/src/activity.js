@@ -6,14 +6,17 @@ function Activity(activity_name){
 }
 Activity.prototype.create = function(){
 //    console.log(localStorage.activity_ids)
-    var activities_json = JSON.parse(localStorage.getItem(localStorage.activities))|| [];
-    var activity_ids = JSON.parse(localStorage.getItem(localStorage.activity_ids))|| [];
-    console.log(activity_ids)
-    console.log('0')
+    var activities_json = JSON.parse(localStorage.getItem("activities")) || {};
+    var activity_ids = JSON.parse(localStorage.getItem("activity_ids")) || [];
+    activity_ids.length.toString(10)
     var id = activity_ids.length
+    console.log(activity_ids)
     console.log(id)
-    activities_json.push(this)
+    activity_ids.push(id)
+//    activities_json.push(id)
 //    activities_json.unshift(this)
+
+    activities_json[id]= this
     console.log(activities_json[id])
     localStorage.setItem("activity_ids",JSON.stringify(activity_ids))
     localStorage.setItem("activities",JSON.stringify(activities_json))

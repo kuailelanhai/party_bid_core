@@ -6,8 +6,7 @@ function Activity(activity_name){
 Activity.prototype.create = function(){
     var activities_json = JSON.parse(localStorage.getItem(localStorage.activities))|| [];
 //    var activity_ids = JSON.parse(localStorage.getItem(localStorage.activity_ids))|| [];
-    console.log('0002')
-//    this.id=activities.length+""
+//    this.id=activities.length + 1
     activities_json.unshift(this)
 //    localStorage.setItem("activity_ids",JSON.stringify(activity_ids))
     localStorage.setItem("activities", JSON.stringify(activities_json))
